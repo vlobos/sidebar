@@ -35,7 +35,7 @@ export default class Home extends Component{
   }
 
   getDetails(e) {
-    axios('http://18.222.29.116:3002/api/details', {params: { rid: e }})  
+    axios('/api/details', {params: { rid: e }})  /* Original http://18.222.29.116:3002/api/details */
       .then(details => {
         delete details.data[0].id;
         delete details.data[0].rid;
@@ -47,7 +47,7 @@ export default class Home extends Component{
   }
 
   getHours(e) {
-    axios('http://18.222.29.116:3002/api/hours', {params : { rid: e }})
+    axios('/api/hours', {params : { rid: e }}) /* Original http://18.222.29.116:3002/api/hours */
       .then(hours => {
         delete hours.data[0].id;
         delete hours.data[0].rid;
@@ -59,7 +59,7 @@ export default class Home extends Component{
   }
 
   getMisc(e) {
-    axios('http://18.222.29.116:3002/api/misc', {params: { rid: e }})
+    axios('/api/misc', {params: { rid: e }}) /*http://18.222.29.116:3002/api/misc*/
       .then(misc => {
         delete misc.data[0].id;
         delete misc.data[0].rid;

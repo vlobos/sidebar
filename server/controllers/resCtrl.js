@@ -4,8 +4,19 @@ const { db } = require('../../db/config')
 
 const resCtrl = {
   get: (req, res) => {
-
+    Restaurant.findAll({ where: {
+      rid: req.query.rid
+    }})
+    .then(data => {
+//      console.log('get misc data ', data);
+      res.status(200).send(data);
+    })
+    .catch(err => {
+      console.log('failed getting restaurants ', err);
+      res.status(404).send(err);
+    })
   },
+
   post: (req, res) => {
     db.queryInterface.bulkInsert('restaurants', data.restaurantData)
       .then((data) => {
@@ -31,7 +42,43 @@ const resCtrl = {
   //    res.status(201).send(data)
     })
       .catch((err) => console.log('failed insert misc dummies ', err))
+  },
+
+  /*--- Put and Delete --*/
+  put: (req, res) => {
+    Restaurant.findOne({
+      rid: req.query.rid
+    })
+    .then(misc => {
+      return Restaurant.updateAttributes({
+        name: 'Balthazar'
+      })
+    })
+    .then(data => {
+     // console.log(data, "here is the data for hours");
+      res.status(200).send(data);
+    })
+    .catch(err => {
+      console.log('failed updating restaurant', err);
+      res.status(404).send(err);
+    })
+  },
+
+  delete: (req, res) => {
+    Restaurant.destroy({
+      where: {
+        rid: rid.req.rid
+      }
+    })
+    .then(deletedRestaurant => {
+      console.log('deleted')
+    })
+    .catch(err => {
+      console.log('failed to delete restaurant ', err);
+      res.status(404).send(err);
+    })
   }
+
 }
 
 module.exports.resCtrl = resCtrl;
