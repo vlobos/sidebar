@@ -47,7 +47,7 @@ const hoursCtrl = {
       })
     })
     .then(data => {
-     // console.log(data, "here is the data for hours");
+     //  console.log(data, "here is the data for hours");
       res.status(200).send(data);
     })
     .catch(err => {

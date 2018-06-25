@@ -1,5 +1,6 @@
 const { Restaurant } = require('../../db/models');
-const data = require('./data.js');
+const data = require('./data.js');   
+//const { restaurantData, hoursData, detailsData, miscData } = require('../../db/data/datagenerator')
 const { db } = require('../../db/config')
 
 const resCtrl = {
@@ -16,7 +17,7 @@ const resCtrl = {
       res.status(404).send(err);
     })
   },
-
+// --- post is required by models/index ---
   post: (req, res) => {
     db.queryInterface.bulkInsert('restaurants', data.restaurantData)
       .then((data) => {
@@ -55,7 +56,6 @@ const resCtrl = {
       })
     })
     .then(data => {
-     // console.log(data, "here is the data for hours");
       res.status(200).send(data);
     })
     .catch(err => {
