@@ -1,18 +1,21 @@
 const mysql = require('mysql');
 
-let connection = mysql.createConnection({
+let db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
+  port: '3306',
   password: '',
   database: 'sidebar'
 })
 
-connection.connect((err)=> {
+db.connect((err)=> {
   if (err) {
     console.log('Failed to connect to MariaDB', err);
   } else {
     console.log('Connected to MariaDB');
+    //connect.query (load stuff into db//copy command....)
   }
 });
 
-connection.end()
+
+module.exports = db;

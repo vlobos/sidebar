@@ -54,6 +54,38 @@ const yesNo = () => {
   return random(answer);
 }
 
+const goodFor = () => {
+  const random = (arr) => {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+  const answer = ['Breakfast', 'Brunch', 'Lunch', 'Dinner', 'Happy Hour']
+  return random(answer);
+}
+
+const attire = () => {
+  const random = (arr) => {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+  const answer = ['Casual', 'Formal', 'Semi-casual']
+  return random(answer);
+}
+
+const ambience = () => {
+  const random = (arr) => {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+  const answer = ['Casual', 'Trendy', 'Classy', 'Hipster']
+  return random(answer);
+}
+
+const noise = () => {
+  const random = (arr) => {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+  const answer = ['Loud', 'Quiet', 'Moderate']
+  return random(answer);
+}
+
 /*=== STREAMS ===*/
 
 // let restStream = fs.createWriteStream('data/restdata.csv', {'flags': 'a'});
@@ -167,12 +199,12 @@ let sidebarStream = fs.createWriteStream('data/sidebardata.csv', {'flags': 'a'})
 //       j++;
 //       if (i === 0) {
 //         // last time!
-//         writer.write(`${j}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}\n`);
+//         writer.write(`${j},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${goodFor()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${attire()},${ambience()},${noise()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
 //         console.log('done');
 //       } else {
 //         // see if we should continue, or wait
 //         // don't pass the callback, because we're not done yet.
-//         ok = writer.write(`${j}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}, ${yesNo()}\n`);
+//         ok = writer.write(`${j},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${goodFor()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${attire()},${ambience()},${noise()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
 //       }
 //     } while (i > 0 && ok);
 //     if (i > 0) {
@@ -188,29 +220,29 @@ let sidebarStream = fs.createWriteStream('data/sidebardata.csv', {'flags': 'a'})
 
 /*--- Sidebar Data Write for MariaDB and non-relational db ---*/
 
-// const writeMisc = (writer) => {
-//     let i = 10000000;
-//     function write() {
-//       let ok = true;
-//       do {
-//         i--;
-//         if (i === 0) {
-//           // last time!
-//           writer.write(`${restaurantName()},${priceRange()},${health()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
-//           console.log('done');
-//         } else {
-//           // see if we should continue, or wait
-//           // don't pass the callback, because we're not done yet.
-//           ok = writer.write(`${restaurantName()},${priceRange()},${health()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
-//         }
-//       } while (i > 0 && ok);
-//       if (i > 0) {
-//         // had to stop early!
-//         // write some more once it drains
-//         writer.once('drain', write);
-//       }
-//     }
-//     write();
-//   }
+const writeMisc = (writer) => {
+    let i = 10000000;
+    function write() {
+      let ok = true;
+      do {
+        i--;
+        if (i === 0) {
+          // last time!
+          writer.write(`,${restaurantName()},${priceRange()},${health()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${goodFor()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${attire()},${ambience()},${noise()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
+          console.log('done');
+        } else {
+          // see if we should continue, or wait
+          // don't pass the callback, because we're not done yet.
+          ok = writer.write(`,${restaurantName()},${priceRange()},${health()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${goodFor()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${attire()},${ambience()},${noise()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
+        }
+      } while (i > 0 && ok);
+      if (i > 0) {
+        // had to stop early!
+        // write some more once it drains
+        writer.once('drain', write);
+      }
+    }
+    write();
+  }
   
-//   writeMisc(sidebarStream);
+  writeMisc(sidebarStream);
