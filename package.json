@@ -28,6 +28,7 @@
     "faker": "^4.1.0",
     "mariadb": "0.0.2-security",
     "moment": "^2.22.2",
+    "mongodb": "^3.1.0",
     "mysql": "^2.15.0",
     "nodemon": "^1.17.5",
     "pg": "^7.4.3",

@@ -3,11 +3,12 @@ const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
 
-require('../mariadb/config');
+//require('../mariadb/config');
+require('../mongodb/config');
 const cors = require('cors');
 
-//const { router } = require('./router');
-const { router } = require('../mariadb/router')
+
+const { router } = require('./router');
 
 const app = express();
 const port = process.env.db_port || 3002;

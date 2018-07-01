@@ -2,7 +2,13 @@
 // const { hoursCtrl } = require('../controllers/hoursCtrl');
 // const { miscCtrl } = require('../controllers/miscCtrl');
 // const { resCtrl } = require('../controllers/resCtrl');
-// const router = require('express').Router();
+const router = require('express').Router();
+
+
+/*----MariaDB---*/
+//const { restCtrl } = require('../../mariadb/controllers/restCtrl')
+/*---MongoDB---*/
+const { restCtrl } = require('../../mongodb/controllers/restCtrl')
 
 /* ---- OG Service DB --- */
 // router.route('/details') 
@@ -33,5 +39,14 @@
 //   .put(resCtrl.put)
 //   .delete(resCtrl.delete); 
 
- 
 // module.exports.router = router;
+
+/*---MariaDB and MongoDB---*/
+
+router.route('/restaurants')
+  .get(restCtrl.get)
+  .post(restCtrl.post)
+  .put(restCtrl.put)
+  .delete(restCtrl.delete); 
+
+module.exports.router = router;

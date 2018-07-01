@@ -94,6 +94,7 @@ const noise = () => {
 // let miscStream = fs.createWriteStream('data/miscdata.csv', {'flags': 'a'});
 let sidebarStream = fs.createWriteStream('data/sidebardata.csv', {'flags': 'a'});
 
+
 // /*--Restaurant write--*/
 
 // const writeMisc = (writer) => {
@@ -222,23 +223,20 @@ let sidebarStream = fs.createWriteStream('data/sidebardata.csv', {'flags': 'a'})
 
 const writeMisc = (writer) => {
     let i = 10000000;
+    let j =1
     function write() {
       let ok = true;
       do {
         i--;
+        j++;
         if (i === 0) {
-          // last time!
-          writer.write(`,${restaurantName()},${priceRange()},${health()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${goodFor()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${attire()},${ambience()},${noise()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
+          writer.write(`${j},${restaurantName()},${priceRange()},${health()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${goodFor()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${attire()},${ambience()},${noise()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
           console.log('done');
         } else {
-          // see if we should continue, or wait
-          // don't pass the callback, because we're not done yet.
-          ok = writer.write(`,${restaurantName()},${priceRange()},${health()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${goodFor()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${attire()},${ambience()},${noise()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
+          ok = writer.write(`${j},${restaurantName()},${priceRange()},${health()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${hours()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${goodFor()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${attire()},${ambience()},${noise()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()},${yesNo()}\n`);
         }
       } while (i > 0 && ok);
       if (i > 0) {
-        // had to stop early!
-        // write some more once it drains
         writer.once('drain', write);
       }
     }
@@ -246,3 +244,5 @@ const writeMisc = (writer) => {
   }
   
   writeMisc(sidebarStream);
+
+  //for mariadb, datagenerator does not generate id. 
