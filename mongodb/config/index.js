@@ -4,7 +4,7 @@ const url = 'mongodb://localhost:27017';
 
 let db;
 
-MongoClient.connect(url, function(err,client){
+MongoClient.connect(url, { poolSize: 20 }, function(err,client){
   if (err) {
     console.log('Error connecting to DB')
     throw err;

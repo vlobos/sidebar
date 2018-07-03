@@ -245,4 +245,6 @@ const writeMisc = (writer) => {
   
   writeMisc(sidebarStream);
 
+  //data file is here: "C:\Users\Sury\Desktop\SDC\sidebardata.csv"
+
   //for mariadb, datagenerator does not generate id. 

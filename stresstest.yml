@@ -1,0 +1,13 @@
+config:
+  target: "http://localhost:3002/api"
+  http:
+    - pool: 20
+  phases:
+    - duration: 60
+      arrivalRate: 250
+scenarios:
+  - flow:
+    - loop:
+      - get:
+          url: "/Restaurants?id={{{$randomNumber(1,10000000)}}}"
+      count: 50
