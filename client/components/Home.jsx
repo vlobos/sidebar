@@ -21,16 +21,6 @@ export default class Home extends Component{
   }
 
   addRestaurants() {
-// --- ORIGINAL -----
-//    const e = Math.floor(Math.random() * 100 + 1);
-//    axios.post('/api/restaurants')
-//      .then((data) => {
-        // this.getDetails(e);
-        // this.getHours(e);
-        // this.getMisc(e);
-//      })
-//      .catch((err) => console.log('err from post ', err))
-
 // ---- for MongoDB ----
     const e = Math.floor(Math.random() * 100 + 1);
       this.getRestaurantInfo(e);
@@ -93,42 +83,6 @@ export default class Home extends Component{
         console.log("FAILURE!")
       })
   }
-  //--- ORIGINAL AXIOS REQUESTS ----
-  // getDetails(e) {
-  //   axios('/api/details', {params: { rid: e }})  /* Original http://18.222.29.116:3002/api/details */
-  //     .then(details => {
-  //       delete details.data[0].id;
-  //       delete details.data[0].rid;
-  //       this.setState({ details: details.data[0] })
-  //     })
-  //     .catch(err => {
-  //       console.log('failed /api/details get ', err);
-  //     })
-  // }
-
-  // getHours(e) {
-  //   axios('/api/hours', {params : { rid: e }}) /* Original http://18.222.29.116:3002/api/hours */
-  //     .then(hours => {
-  //       delete hours.data[0].id;
-  //       delete hours.data[0].rid;
-  //       this.setState({ hours: hours.data[0] })
-  //     })
-  //     .catch(err => {
-  //       console.log('failed to load /api/hours ', err)
-  //     })
-  // }
-
-  // getMisc(e) {
-  //   axios('/api/misc', {params: { rid: e }}) /*http://18.222.29.116:3002/api/misc*/
-  //     .then(misc => {
-  //       delete misc.data[0].id;
-  //       delete misc.data[0].rid;
-  //       this.setState({ misc: misc.data[0] })
-  //     })
-  //     .catch(err => {
-  //       console.log('failed /api/misc get ', err);
-  //     })
-  // }
 
   render() {
     const hours = this.state.hours;

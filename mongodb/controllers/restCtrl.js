@@ -7,8 +7,7 @@ const restCtrl = {
       if (err) {
         throw err;
       } else {
-        console.log('Successful query')
-        res.send(results);
+        res.status(200).send(results);
       }
     })
   },
@@ -19,7 +18,6 @@ const restCtrl = {
       if (err){
         throw err;
       } else {
-        console.log('Successfully posted')
         res.sendStatus(200).end();
       }
     })

@@ -4,7 +4,6 @@ const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
 
-//require('../mariadb/config');
 require('../mongodb/config');
 const cors = require('cors');
 
