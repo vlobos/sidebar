@@ -1,6 +1,6 @@
-FROM node:8.11.3
-RUN mkdir /welp-sidebar
-WORKDIR  /welp-sidebar
+FROM node:10
+RUN mkdir /sidebar-service
+WORKDIR  /sidebar-service
 COPY package*.json ./
 RUN npm install
 COPY . .

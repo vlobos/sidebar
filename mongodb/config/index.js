@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
-
-const url = 'mongodb://localhost:27017';
+//change `localhost` to the Sidebar_Database EC2 instance IP : port
+const url = 'mongodb://18.144.44.107:32768';
 
 let db;
 
