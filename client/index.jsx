@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Home from './components/Home.jsx';
+import Sidebar from './components/Sidebar.jsx';
 
-render(<Home />, document.getElementById('sidebar'));
+
+render(<Sidebar />, document.getElementById('sidebar'));

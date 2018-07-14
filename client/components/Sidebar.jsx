@@ -5,7 +5,7 @@ import Misc from './Misc.jsx';
 import axios from 'axios';
 import moment from 'moment';
 
-export default class Home extends Component{
+export default class Sidebar extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -16,13 +16,13 @@ export default class Home extends Component{
   }
 
   componentDidMount() {
-    //random search on refresh
+
     this.addRestaurants();
   }
 
   addRestaurants() {
 // ---- for MongoDB ----
-    const e = Math.floor(Math.random() * 100 + 1);
+    const e = Math.floor(Math.random() * 10000000);
       this.getRestaurantInfo(e);
       console.log('searching for restaurant id ', e)
       console.log("The time is ", moment().format('HHmm'))
@@ -31,7 +31,8 @@ export default class Home extends Component{
 
 //--- for MongoDB to work with React components as OG written----
   getRestaurantInfo(e) {
-    axios('/api/restaurants', {params: { id: e }})
+    axios('http://localhost:3002/api/restaurants/'+e)
+ //   axios(`http://52.53.174.134/api/restaurants/`+ e)
       .then((results) => {
         const rest = results.data[0]
         let details = {
@@ -122,6 +123,7 @@ export default class Home extends Component{
               :
               ''
     });
+  
 
     return(
       <div>

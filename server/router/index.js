@@ -1,11 +1,13 @@
 const router = require('express').Router();
+const { restCtrl } = require('../../mongodb/controllers/restCtrl');
 
-const { restCtrl } = require('../../mongodb/controllers/restCtrl')
-
-router.route('/restaurants')
+router.route('/restaurants/:id')
   .get(restCtrl.get)
+  .delete(restCtrl.delete)
+
+router.route('/restaurants')  
   .post(restCtrl.post)
   .put(restCtrl.put)
-  .delete(restCtrl.delete); 
+
 
 module.exports.router = router;

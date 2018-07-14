@@ -1,30 +1,32 @@
 const MongoClient = require('mongodb').MongoClient;
-//change `localhost` to the Sidebar_Database EC2 instance IP : port
-const url = 'mongodb://18.144.44.107:32768';
+//const url = 'mongodb://18.144.44.107:32768';
+const url = 'mongodb://localhost:27017'
 
-let db;
+let _db;
+let _restaurantInfo;
 
-MongoClient.connect(url, { poolSize: 20 }, function(err,client){
+MongoClient.connect(url, function(err,client){
   if (err) {
     console.log('Error connecting to DB')
     throw err;
   } else {
-    db = client.db('sidebar');
-    client.db('sidebar').createCollection('restaurant_info', function(err,client){
+    _db = client.db('sidebar');
+    _db.createCollection('restaurant_info', function(err,client){
       console.log('database created!')
       if (err){
         throw err
       } else {
+        _restaurantInfo = _db.collection('restaurant_info')
         console.log('table created!')
       } 
     })
   }
 })
 
-function mongoDb(){
-  return db
+function getRestaurantInfo(){
+  return _restaurantInfo;
 }
 
-module.exports = mongoDb
+module.exports = getRestaurantInfo
 
 
