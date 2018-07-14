@@ -1,2 +1,5 @@
 node_modules
 newrelic
+newrelic_agent.log
+static/bundle.js
+static/bundle-server.js
