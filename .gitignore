@@ -3,3 +3,4 @@ newrelic
 newrelic_agent.log
 static/bundle.js
 static/bundle-server.js
+data/sidebardata.csv
