@@ -1,14 +1,15 @@
-Sidebar Component for Welp (All Hail Lord Voldemort)
+# Sidebar for Welp
 
+My System Design Capstone project for HRLA22. This is a micro-service meant to mimic Yelp's restaurant listing page. I optimized the legacy code and database and implemented various technologies to successfully scale the app to support 10k rps. 
 
+My proxy server: https://github.com/vlobos/ssr-proxy-server
 
-bundle.js = https://s3-us-west-1.amazonaws.com/hr22welp-sidebar/bundle.js
-
-
-
-may need to:
-
-turn off db
-
-set db sync force: true
-uncomment commented out lines in addRestaurants() in ./client/components/Home.jsx
+# Technologies Used
+- ReactJs
+- Express
+- MongoDB
+- MariaDB
+- Docker
+- Nginx
+- AWS
+- Loader
